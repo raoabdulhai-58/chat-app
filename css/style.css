@@ -1,0 +1,135 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  scroll-behavior: smooth;
+}
+.container{
+  width: 350px;
+  height: 500px;
+  background-image: url('/image/wats.png');
+  /* background-color: darkcyan; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.hedder{
+  text-align: center;
+  background-color: #075E55;
+  padding: 20px 0;
+  font-size: 24px;
+  color: #fff;
+}
+.dots{
+  margin-right: 5px;
+  font-size: 32px;
+}
+.chat-box{
+    height: 375px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-y: scroll;
+    padding-bottom: 10px;
+    display: none;
+
+  }
+.input-box{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 10px;
+  background-color: #075E55;
+}
+#inp-box{
+  padding: 10px;
+  width: 270px;
+  border-radius: 100px;
+  border: none;
+  outline: none;
+}
+#send-btn{
+  padding: 10px 10px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  margin-left: 5px;
+  outline: none;
+}
+span{
+  background-color: #fff;
+  padding: 10px;
+  font-weight: lighter;
+  display: inline-block;
+  border-radius: 20px;
+  margin: 5px 5px 5px 10px;
+  text-align: left;
+  box-shadow: 0.2px 0.3px 2px rgba(0,0, 0, 0.3);
+}
+.name{
+  font-weight: bold;
+  margin-right:5px ;
+}
+.time{
+  font-size: 11px;
+  margin-left: 5px;
+  color: gray;
+}
+/* .msgs{
+  display: none;
+} */
+.sec{
+  text-align: right; 
+  color: #fff;
+}
+.sec span{
+  background-color: rgb(111, 226, 111);
+}
+.sec .name{
+  display: none;
+}
+.sec .time{
+  color: #fff;
+}
+.input-form{
+   background-color: #fff;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+   padding: 25px;
+   box-shadow: 0.3px 0.3px 5px rgba(0, 0, 0, 0.3);
+  animation: modalup .7s .4s forwards ;
+  }
+
+#inp-name{
+  border: none;
+  border-bottom: 1px solid gray;
+  padding: 6px;
+  margin-bottom: 10px;
+  outline: none;
+}
+#enter-btn{
+  width: 100%;
+  border: none;
+  padding: 10px;
+  background-color: #075E55;
+  color: #fff;
+  cursor: pointer;
+}
+
+@keyframes modalup{
+  from {
+    top: 100%;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+.icon{
+  margin-right: 5px;
+}
