@@ -1,56 +1,55 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html{
+html {
   scroll-behavior: smooth;
 }
-.container{
+.container {
   width: 350px;
   height: 500px;
-  background-image: url('/image/wats.png');
+  background-image: url("/image/wats.png");
   /* background-color: darkcyan; */
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
-.hedder{
+.hedder {
   text-align: center;
-  background-color: #075E55;
+  background-color: #075e55;
   padding: 20px 0;
   font-size: 24px;
   color: #fff;
 }
-.dots{
+.dots {
   margin-right: 5px;
   font-size: 32px;
 }
-.chat-box{
-    height: 375px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow-y: scroll;
-    padding-bottom: 10px;
-    display: none;
-
-  }
-.input-box{
+.chat-box {
+  height: 375px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: scroll;
+  padding-bottom: 10px;
+  display: none;
+}
+.input-box {
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 10px 10px;
-  background-color: #075E55;
+  background-color: #075e55;
 }
-#inp-box{
+#inp-box {
   padding: 10px;
   width: 270px;
   border-radius: 100px;
   border: none;
   outline: none;
 }
-#send-btn{
+#send-btn {
   padding: 10px 10px;
   border-radius: 100px;
   border: none;
@@ -58,7 +57,7 @@ html{
   margin-left: 5px;
   outline: none;
 }
-span{
+.li-span {
   background-color: #fff;
   padding: 10px;
   font-weight: lighter;
@@ -66,13 +65,13 @@ span{
   border-radius: 20px;
   margin: 5px 5px 5px 10px;
   text-align: left;
-  box-shadow: 0.2px 0.3px 2px rgba(0,0, 0, 0.3);
+  box-shadow: 0.2px 0.3px 2px rgba(0, 0, 0, 0.3);
 }
-.name{
+.name {
   font-weight: bold;
-  margin-right:5px ;
+  margin-right: 5px;
 }
-.time{
+.time {
   font-size: 11px;
   margin-left: 5px;
   color: gray;
@@ -80,47 +79,48 @@ span{
 /* .msgs{
   display: none;
 } */
-.sec{
-  text-align: right; 
+.sec {
+  text-align: right;
   color: #fff;
 }
-.sec span{
+.sec .li-span {
   background-color: rgb(111, 226, 111);
 }
-.sec .name{
+.sec .name {
   display: none;
 }
-.sec .time{
+.sec .time {
   color: #fff;
 }
-.input-form{
-   background-color: #fff;
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%,-50%);
-   padding: 25px;
-   box-shadow: 0.3px 0.3px 5px rgba(0, 0, 0, 0.3);
-  animation: modalup .7s .4s forwards ;
-  }
+.input-form {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 25px;
+  box-shadow: 0.3px 0.3px 5px rgba(0, 0, 0, 0.3);
+  animation: modalup 0.7s 0.4s forwards;
+  /* display: none; */
+}
 
-#inp-name{
+#inp-name {
   border: none;
   border-bottom: 1px solid gray;
   padding: 6px;
   margin-bottom: 10px;
   outline: none;
 }
-#enter-btn{
+#enter-btn {
   width: 100%;
   border: none;
   padding: 10px;
-  background-color: #075E55;
+  background-color: #075e55;
   color: #fff;
   cursor: pointer;
 }
 
-@keyframes modalup{
+@keyframes modalup {
   from {
     top: 100%;
     opacity: 0;
@@ -130,6 +130,63 @@ span{
     opacity: 1;
   }
 }
-.icon{
+.icon {
   margin-right: 5px;
+}
+.del-box {
+  background-color: #075e55;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 20px;
+  width: 70%;
+  color: #fff;
+  display: none;
+}
+
+#del-btn1 {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+  color: #fff;
+  margin-left: 100px;
+}
+#del-btn2 {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+  color: #fff;
+}
+#del-msg {
+  background-color: #075e55;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 12px 20px;
+  color: #fff;
+  border-radius: 100px;
+  display: none;
+}
+#login-btn{
+  width: 250px;
+  padding: 12px 0;
+  background-color: #075e55;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.fb-icon{
+  margin-right: 5px;
+  font-size: 20px;
 }

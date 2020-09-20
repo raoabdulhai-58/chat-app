@@ -17,36 +17,28 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 const msgref = db.ref("/messages");
 const id = msgref.push().key;
- const inpBox = document.getElementById('inp-box');
- const msgs = document.getElementById('msgs');
- const inp_name = document.getElementById('inp-name')
- const inp_form = document.getElementById("inp-form")
- const chatbox = document.getElementById('chat-box')
- let name ;
+const inpBox = document.getElementById('inp-box');
+const msgs = document.getElementById('msgs');
+const inp_name = document.getElementById('inp-name')
+const inp_form = document.getElementById("inp-form")
+const chatbox = document.getElementById('chat-box')
+let name;
 
-//  name = inp_name.value;
-
-
-//  localStorage.setItem("name",name)
-
-
-
-
- let timeformate = () => { 
+//for formaten time 
+let timeformate = () => {
   const date = new Date();
   var hours = date.getHours();
   var minutes = date.getMinutes();
   var ampm = hours >= 12 ? 'pm' : 'am';
   hours = hours % 12;
   hours = hours ? hours : 12;
-  minutes = minutes < 10 ? '0'+minutes : minutes;
+  minutes = minutes < 10 ? '0' + minutes : minutes;
   var currnetTime = hours + ':' + minutes + ' ' + ampm;
   return currnetTime
 }
- 
-let submitdata = () => {
 
-  
+// for geting data from user through input and save into database
+let submitdata = (event) => {
   const messages = {
     id,
     name,
@@ -54,57 +46,84 @@ let submitdata = () => {
     ctime: timeformate()
   }
   msgref.push(messages);
-   inpBox.value = ""
-} 
+  inpBox.value = ""
+  event.preventDefault();
+}
 
-msgref.on('child_added',(data)=>{
-
- const{id: userid,name,text,ctime}= data.val()
+// for addeding new msg
+msgref.on('child_added', (data) => {
+  const { id: userid, name, text, ctime } = data.val()
   msgs.innerHTML += `<li class="msg ${id == userid && "sec"}" id="message-${data.key}">
-  <span onclick = "del(this)" data-id = ${data.key}><i class="fas fa-user icon"></i>
-  <i class="name">${name}: </i>${text} <i class="time">${ctime}</i></span>
+<span class = "li-span" onclick = "del(this)" data-id = ${data.key}><i class="fas fa-user icon"></i>
+<i class="name">${name}: </i>${text} <i class="time">${ctime}</i></span>
 </li>`
 })
 
+// get id for msg del
+let messageId;
 let del = (self) => {
-  var messageId = self.getAttribute("data-id")
- msgref.child(messageId).remove()
+  messageId = self.getAttribute("data-id")
+  document.getElementById('del-box').style.display = 'block'
 }
 
+//for ok button msg del
+let delmsg = () => {
+  msgref.child(messageId).remove()
+  document.getElementById('del-box').style.display = 'none'
+  document.getElementById('del-msg').style.display = 'block';
+  delmsgout();
+}
 
-msgref.on("child_removed",(data) => {
-  document.getElementById("message-"+data.key).innerHTML = "message has been removed";
-  document.getElementById("message-"+data.key).style.color = "black"
-  document.getElementById("message-"+data.key).style.padding = "15px"
+//message has del msg
+msgref.on("child_removed", (data) => {
+  document.getElementById("message-" + data.key).innerHTML = "message has been removed";
+  document.getElementById("message-" + data.key).style.color = "black"
+  document.getElementById("message-" + data.key).style.padding = "15px"
 })
 
-
-
-let entername = ()=>{
-    if (!inp_name.value.trim()) {
-       alert("plz enter your name")
-    }
-    else{
-      inp_form.style.display = 'none';
-      chatbox.style.display = 'block'
-      return name = inp_name.value;
-      
-    }  
+//message deleted box
+let delmsgout = () => {
+  setTimeout(function () {
+    document.getElementById('del-msg').style.display = 'none';
+  }, 1500);
 }
 
-inpBox.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("send-btn").click();
-    document.getElementById("enter-btn").click();
-  }
-});
-inp_name.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("enter-btn").click();
-  }
-});
+// for cancel button
+let cancel = () => {
+  document.getElementById('del-box').style.display = 'none'
+}
+
+// for get user name 
+// let entername = (event) => {
+//   event.preventDefault();
+//   if (!inp_name.value.trim()) {
+//     alert("plz enter your name")
+//   }
+//   else {
+//     inp_form.style.display = 'none';
+//     chatbox.style.display = 'block'
+//     return name = inp_name.value;
+//   }
+
+// }
+
+
+let facebook_login = () => {
+  var provider = new firebase.auth.FacebookAuthProvider();
+
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    var token = result.credential.accessToken;
+    var user = result.user;
+    // name = user.displayName
+    inp_form.style.display = 'none';
+    chatbox.style.display = 'block'
+    return name = user.displayName;
+    console.log(name)
+    
+  }).catch(function(error) {
+      console.log(error)
+  });
+}
 
 
 

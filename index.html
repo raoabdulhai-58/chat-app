@@ -7,8 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+   
     <title>title</title>
     <style>
         
@@ -16,39 +19,50 @@
 </head>
 
 <body>
-    
-
      <div class="container">
-      <div class="input-form" id="inp-form">
+      <!-- <div class="input-form" id="inp-form">
+        <form onsubmit="return entername(event)" >
         <input type="text" id="inp-name" placeholder="Enter your Name">
-        <button id="enter-btn" onclick="entername()">Enter</button>
+        <button id="enter-btn" >Enter</button>
+      </form>
+    </div> -->
+      <div class="input-form" id="inp-form">
+        <!-- <form onsubmit="return entername(event)" > -->
+        <!-- <input type="text" id="inp-name" placeholder="Enter your Name"> -->
+        <button id="login-btn" onclick="facebook_login()" ><span id="fb-btn"><i class="fab fa-facebook-square fb-icon"></i>Sign up using Facebook</span></button>
+      <!-- </form> -->
     </div>
+      <div class="del-box" id="del-box">
+        <p>Do you want to delete?</p>
+        <button id="del-btn1" onclick="cancel()">Cancel</button>
+        <button id="del-btn2" onclick="delmsg()">Ok</button>
+    </div>
+      <div id="del-msg">
+          Message Deleted
+      </div>
        <div class="hedder">
-
         <i class="fas fa-sms dots"></i>Chat-app 
        </div>
        <div class="chat-box" id="chat-box">
-         
-         <ul id="msgs">
-           
-         </ul>  
+         <ul id="msgs"></ul>  
        </div>
        <div class="input-box">
+         <form onsubmit="return submitdata(event)" >
          <input type="text" id="inp-box" placeholder="Enter your message" >
-         <button id="send-btn" onclick="submitdata()" >send</button>
+         <button id="send-btn">send</button>
+        </form>
        </div>
      </div>
 
 
-
-
-
-
-
-
-
-
-
+<script>
+ jQuery(document).ready(function() {
+    
+    jQuery('body').animate({scrollTop: +400}, 1000);
+    
+});
+</script>
+    
 
 <script src="js/app.js"></script>
 </body>
